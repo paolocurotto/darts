@@ -29,9 +29,7 @@ public class GreenDart extends Dart {
 		if(collided == false) {
 			time_alive++;	
 			brain.calcOutput();
-
 		}
-		
 	}
 	
 	@Override
@@ -44,7 +42,6 @@ public class GreenDart extends Dart {
 	public void newTurn () {
 		//super.newTurn();
 		turn = brain.newAngle();
-	
 	}
 	
 	public int getTime() {

@@ -105,7 +105,7 @@ public abstract class Dart {
 		
 		xPoints[2] = x + (int) Math.round(vel * Math.cos(Math.toRadians(angle))) + (int) Math.round(15 * Math.cos(Math.toRadians(angle)));
 		yPoints[2] = y + (int) Math.round(vel * Math.sin(Math.toRadians(angle))) + (int) Math.round(15 * Math.sin(Math.toRadians(angle)));
-		
+
 		g.fillPolygon(xPoints, yPoints, 3);
 		
 		g.setColor(Color.black);

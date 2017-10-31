@@ -7,7 +7,7 @@ import main.GreenDart;
 
 public class Brain {
 		
-	public int n_midldle = 100;
+	public int n_midldle = 10000;
 	
 	public int[] input;
 	public double[] middle = new double[n_midldle];
@@ -74,7 +74,7 @@ public class Brain {
 	}
 	
 	public int newAngle() {
-		//System.out.println("Dart n° "+ dart.id +" output = " + output[0]);
+		//System.out.println("Dart nï¿½ "+ dart.id +" output = " + output[0]);
 		if(output[0] <= 0) {
 			return -1;
 		} else {

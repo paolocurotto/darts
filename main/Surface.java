@@ -22,7 +22,7 @@ public class Surface extends JPanel implements ActionListener {
 	Graphics2D g; //740 x 500
     
 	//Number of darts
-	public int ngreen_darts = 20;	
+	public int ngreen_darts = 30;
 	public int nmag_darts = 30;
 	
 	GreenDart[] greenDarts = new GreenDart[ngreen_darts];
@@ -78,9 +78,7 @@ public class Surface extends JPanel implements ActionListener {
         for (Rectangle rectangle : rectangles) {
         	rectangle.draw(h, w, g2d, greenDarts, magDarts);
         }
-        
-        
-        
+
         /*for (Dart dart : greenDarts) {
         	dart.checkIfHitAny(magDarts);
         }*/
@@ -94,7 +92,10 @@ public class Surface extends JPanel implements ActionListener {
         	greenDarts = adn.new_generation_darts();
         	restartDarts();
         	calcAvg();
-        	System.out.println("Iter n° " + iter + " new AVG = " + newavg + " --- " + df.format(avg) + " - Bestdart = dart " + adn.bestDart.id);
+        	System.out.println("Iter n° " + iter +
+					" new AVG = " + newavg + "" +
+					" --- " + df.format(avg) +
+					" - Bestdart = dart " + adn.bestDart.id + " (" + adn.bestDart.time_alive+ ")");
         	iter++;
 
         } 
