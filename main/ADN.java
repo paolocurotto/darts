@@ -31,7 +31,7 @@ public class ADN {
 				su += darts_parents[i].fitness.value;
 		}
 		averg = su /n_darts;
-		System.out.print("Fitness AVG = " + averg + " --- ");		
+		//System.out.print("Fitness AVG = " + averg + " --- ");		
 		return darts_sons;
 	}
 	
@@ -39,18 +39,12 @@ public class ADN {
 						
 		int bestFit = 0; 
 		for (GreenDart parent : darts_parents) {
-			parent.fitness.calculateFitness();
-			//System.out.println("id = " + parent.id);
-			int currFit = parent.fitness.value;
-			//System.out.println("dart "+parent.id+ " got fit " + currFit);
+			
+			int currFit = parent.fitness.calculateFitness();
 
 			if(currFit > bestFit) {
 				bestFit = currFit;
-				//System.out.println("id = " + parent.id);
-
 				bestDart = parent;
-				//System.out.println("best dart id = " + bestDart.id);
-
 			}
 			fit_sum = fit_sum + currFit;
 		}
@@ -63,15 +57,16 @@ public class ADN {
 			son.setEnemies(dad.enemies);
 			son.id = i;
 			son.setBrain(new Brain(son));
+			double varfac = i * 0.2;
 			
 			for(int ix1 = 0; ix1 < son.brain.axons1.length; ix1++) {
 				
-				son.brain.axons1[ix1] = bestDart.brain.axons1[ix1] + ThreadLocalRandom.current().nextDouble(-1 * i, (1 * i) + 0.000001);
+				son.brain.axons1[ix1] = bestDart.brain.axons1[ix1] + ThreadLocalRandom.current().nextDouble(varfac, varfac + 0.000001);
 			}
 			
 			for(int ix2 = 0; ix2 < son.brain.axons2.length; ix2++) {
 				
-				son.brain.axons2[ix2] = bestDart.brain.axons2[ix2] + ThreadLocalRandom.current().nextDouble(-1 * i, (1 * i) + 0.000001);
+				son.brain.axons2[ix2] = bestDart.brain.axons2[ix2] + ThreadLocalRandom.current().nextDouble(varfac, varfac + 0.000001);
 			}
 										
 			darts_sons[i] = son;

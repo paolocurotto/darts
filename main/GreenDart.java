@@ -28,11 +28,10 @@ public class GreenDart extends Dart {
 
 		if(collided == false) {
 			time_alive++;	
+			brain.calcOutput();
+
 		}
 		
-		brain.calcOutput();
-//		newTurn();
-
 	}
 	
 	@Override

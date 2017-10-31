@@ -9,9 +9,9 @@ public class Fitness {
 		dart = dart_;
 	}
 	
-	public void calculateFitness() {
+	public int calculateFitness() {
 		value = dart.getTime();
-
+		return value;
 	}
 	
 	

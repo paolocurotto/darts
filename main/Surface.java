@@ -4,6 +4,8 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.math.RoundingMode;
+import java.text.DecimalFormat;
 import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 import javax.swing.JPanel;
@@ -34,11 +36,14 @@ public class Surface extends JPanel implements ActionListener {
     				
     int h;
     int w;
+    DecimalFormat df = new DecimalFormat("##.####");
 
     public Surface() {
     	timer = new Timer(DELAY, this);
 	    timer.start();
 	    iter = 1;
+	    df.setRoundingMode(RoundingMode.DOWN);
+
 	    h = getHeight();
 	    w = getWidth();
         
@@ -89,7 +94,7 @@ public class Surface extends JPanel implements ActionListener {
         	greenDarts = adn.new_generation_darts();
         	restartDarts();
         	calcAvg();
-        	System.out.println(avg + " -- Iter n° " + iter + " - Bestdart = dart " + adn.bestDart.id);
+        	System.out.println("Iter n° " + iter + " new AVG = " + newavg + " --- " + df.format(avg) + " - Bestdart = dart " + adn.bestDart.id);
         	iter++;
 
         } 
