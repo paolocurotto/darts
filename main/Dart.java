@@ -3,7 +3,7 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.util.concurrent.ThreadLocalRandom;
 
-public class Dart {
+public abstract class Dart {
 
 	public Fitness fitness;
 	
@@ -171,7 +171,7 @@ public class Dart {
 	}
 
 	public void iWasKilled() {
-		//System.out.println("Dart killed");
+		//System.out.println("Dart"+id+" was killed timealive "+time_alive);
 		collided = true;
 	}
 

@@ -89,7 +89,7 @@ public class Surface extends JPanel implements ActionListener {
         	greenDarts = adn.new_generation_darts();
         	restartDarts();
         	calcAvg();
-        	System.out.println(avg+" Iter n° " + iter);
+        	System.out.println(avg + " -- Iter n° " + iter + " - Bestdart = dart " + adn.bestDart.id);
         	iter++;
 
         } 
@@ -118,13 +118,6 @@ public class Surface extends JPanel implements ActionListener {
 	
 	public void calcAvg() {
 		newavg = adn.averg;
-		/*System.out.println("iter = "+ iter);
-		System.out.println("avg = "+ avg);
-		System.out.println("newavg = "+ newavg);
-		
-		System.out.println("avg * (iter-1/iter) = "+ (avg*((iter-1)/iter)));
-		System.out.println("newavg / iter) = "+ (newavg/iter));*/
-
 
 		avg = ((avg  * (iter-1)/iter  ) + (newavg/iter));
 	}

@@ -40,47 +40,41 @@ public class ADN {
 		int bestFit = 0; 
 		for (GreenDart parent : darts_parents) {
 			parent.fitness.calculateFitness();
+			//System.out.println("id = " + parent.id);
 			int currFit = parent.fitness.value;
+			//System.out.println("dart "+parent.id+ " got fit " + currFit);
 
 			if(currFit > bestFit) {
 				bestFit = currFit;
+				//System.out.println("id = " + parent.id);
+
 				bestDart = parent;
+				//System.out.println("best dart id = " + bestDart.id);
+
 			}
 			fit_sum = fit_sum + currFit;
 		}
 			
-		for (int i = 0; i < darts_sons.length; i++) {
-			dad = darts_parents[i % n_darts];
-			mom = darts_parents[(i + 1) % n_darts];
+		for (int i = 0; i < n_darts; i++) {
+			dad = darts_parents[i];
 			
 			GreenDart son = new GreenDart(dad.starting_x, dad.starting_y, dad.starting_angle);
-			//Brain newBrain = bestDart.brain;
-			//newBrain.dart = son;
+
 			son.setEnemies(dad.enemies);
 			son.id = i;
 			son.setBrain(new Brain(son));
-			//System.out.println("sin.id = " + son.id + "brainssons.id = " + son.brain.dart.id);
-
-			crossing_over1(son, bestDart);
 			
+			for(int ix1 = 0; ix1 < son.brain.axons1.length; ix1++) {
+				
+				son.brain.axons1[ix1] = bestDart.brain.axons1[ix1] + ThreadLocalRandom.current().nextDouble(-1 * i, (1 * i) + 0.000001);
+			}
+			
+			for(int ix2 = 0; ix2 < son.brain.axons2.length; ix2++) {
+				
+				son.brain.axons2[ix2] = bestDart.brain.axons2[ix2] + ThreadLocalRandom.current().nextDouble(-1 * i, (1 * i) + 0.000001);
+			}
+										
 			darts_sons[i] = son;
 		}	
-	}
-	
-	public void crossing_over1(GreenDart son, GreenDart best) {
-		
-		double r = ThreadLocalRandom.current().nextDouble(-1, 1);
-		
-		
-		for(int i = 0; i < son.brain.axons1.length; i++) {
-		
-			son.brain.axons1[i] = best.brain.axons1[i] + r;
-		}
-		
-		for(int i = 0; i < son.brain.axons2.length; i++) {
-			
-			son.brain.axons2[i] = best.brain.axons2[i] + r;
-		}
-						
 	}
 }

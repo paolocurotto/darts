@@ -13,6 +13,7 @@ public class Window extends JFrame {
 	}
 	
 	public static void main(String[] args) {
+		
 		EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {
@@ -21,8 +22,6 @@ public class Window extends JFrame {
                 w.setVisible(true);
             }
         });
-
-		
 	}
 	
     private void initUI() {
@@ -35,4 +34,8 @@ public class Window extends JFrame {
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
+    
+    public static void p(Object s) {
+    	System.out.println(s);
+    }    
 }

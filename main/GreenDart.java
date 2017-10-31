@@ -26,9 +26,10 @@ public class GreenDart extends Dart {
 	public void draw(int h, int w, Graphics g) {
 		super.draw(h, w, g);
 
+		if(collided == false) {
+			time_alive++;	
+		}
 		
-		time_alive++;
-
 		brain.calcOutput();
 //		newTurn();
 
@@ -50,7 +51,6 @@ public class GreenDart extends Dart {
 	public int getTime() {
 		return time_alive;
 	}
-	
 	
 	public void setEnemies(Dart[] darts) {
 		enemies = darts;
