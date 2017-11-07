@@ -18,14 +18,17 @@ public abstract class Dart {
 	
 	public int vel;
 	public int angle;
-	public int turn = ThreadLocalRandom.current().nextInt(-1, 1 + 1);; //(-1 -> move left) (0 -> move straight), (1 -> move right)
+	public int turn = 0 ;
 	public int turn_intensity = 2;
 	
 	public Color color;
 	
-	public int[][] dir_moves; // = {{150, -1}, {100, 0}, {1000, 1}};
+	public int[][] dir_moves; //(-1 -> move left) (0 -> move straight), (1 -> move right)
+							// = {{150, -1},
+							// 	  {100, 0},
+							// 	  {1000, 1}};
 	
-	private int i = 0;
+	public int i = 0;
 	public int k = 0;
 	
 	public boolean collided;
@@ -53,9 +56,8 @@ public abstract class Dart {
 		dir_moves = new int[200][2];
 		time_alive = 0;
 		createRandomMoves();
-		
-		//dir_moves = new int[3][2]; // [a][b] after a do b= (-1 -> move left) (0 -> move straight), (1 -> move right)
-										
+
+
 		/**									_
 		 * 					/\				|
 		 * 				   /  \				|
@@ -157,7 +159,7 @@ public abstract class Dart {
 		}
 	}
 	
-	public void colided() {
+	public void collided() {
 		collided = true;
 	}
 
@@ -171,7 +173,6 @@ public abstract class Dart {
 	}
 
 	public void iWasKilled() {
-		//System.out.println("Dart"+id+" was killed timealive "+time_alive);
 		collided = true;
 	}
 

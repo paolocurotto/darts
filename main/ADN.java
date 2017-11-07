@@ -52,23 +52,31 @@ public class ADN {
 		for (int i = 0; i < n_darts; i++) {
 			dad = darts_parents[i];
 			
-			GreenDart son = new GreenDart(dad.starting_x, dad.starting_y, dad.starting_angle);
+			GreenDart son = new GreenDart(dad.starting_x, dad.starting_y, dad.starting_angle, i);
 
 			son.setEnemies(dad.enemies);
 			son.id = i;
 			son.setBrain(new Brain(son));
 			double varfac = i * 0.2;
-			
-			for(int ix1 = 0; ix1 < son.brain.axons1.length; ix1++) {
-				
-				son.brain.axons1[ix1] = bestDart.brain.axons1[ix1] + ThreadLocalRandom.current().nextDouble(varfac, varfac + 0.000001);
+
+			if (i != 29) {
+				for (int ix1 = 0; ix1 < son.brain.axons1.length; ix1++) {
+
+					son.brain.axons1[ix1] = bestDart.brain.axons1[ix1] + ThreadLocalRandom.current().nextDouble(-varfac, varfac + 0.01);
+				}
+
+				for (int ix2 = 0; ix2 < son.brain.axons2.length; ix2++) {
+
+					son.brain.axons2[ix2] = bestDart.brain.axons2[ix2] + ThreadLocalRandom.current().nextDouble(-varfac, varfac + 0.01);
+				}
+
+			} else {
+				son.brain.axons1 = bestDart.brain.axons1;
+				son.brain.axons2 = bestDart.brain.axons2;
+
+
 			}
-			
-			for(int ix2 = 0; ix2 < son.brain.axons2.length; ix2++) {
-				
-				son.brain.axons2[ix2] = bestDart.brain.axons2[ix2] + ThreadLocalRandom.current().nextDouble(varfac, varfac + 0.000001);
-			}
-										
+
 			darts_sons[i] = son;
 		}	
 	}

@@ -7,7 +7,7 @@ import main.GreenDart;
 
 public class Brain {
 		
-	public int n_midldle = 10000;
+	public int n_midldle = 1000;
 	
 	public int[] input;
 	public double[] middle = new double[n_midldle];

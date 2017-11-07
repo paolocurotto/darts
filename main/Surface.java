@@ -53,7 +53,7 @@ public class Surface extends JPanel implements ActionListener {
 	    }
 	    
 	    for (int i = 0; i < ngreen_darts; i++) {
-        	greenDarts[i] = new GreenDart(15, 200, 0);
+        	greenDarts[i] = new GreenDart(15, 200, 0, 1);
         	((GreenDart) greenDarts[i]).setEnemies(magDarts);
         	greenDarts[i].id = i;
         }

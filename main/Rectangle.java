@@ -48,7 +48,7 @@ public class Rectangle {
 			for(int k = 0; k < 3; k++) {
 				
 				if((x1 < dart.xPoints[k] && dart.xPoints[k] < x2) && (y1 < dart.yPoints[k] && dart.yPoints[k] < y2)) {
-					dart.colided();
+					dart.collided();
 				}
 			}
 			

@@ -16,9 +16,12 @@ public class GreenDart extends Dart {
 	public GreenDart() {
 		
 	}
-	public GreenDart(int x_pos, int y_pos, int angle_c) {
+	public GreenDart(int x_pos, int y_pos, int angle_c, int i) {
 		super(x_pos, y_pos, angle_c, Color.green.darker());
 		color = Color.green.darker();
+		if (i == 29) {
+			color = Color.blue;
+		}
 		time_alive = 0;
 	}
 	
@@ -40,7 +43,6 @@ public class GreenDart extends Dart {
 
 	@Override
 	public void newTurn () {
-		//super.newTurn();
 		turn = brain.newAngle();
 	}
 	
